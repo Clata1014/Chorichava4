@@ -713,6 +713,86 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7);
         }
 
+        /* ====== SLIDER DE PROMOCIONES ====== */
+        .promo-slider {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Puntitos de navegación */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slider-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive para el slider */
+        @media (max-width: 768px) {
+            .slider-container {
+                height: 300px;
+            }
+
+            .promo-slider {
+                margin: 20px 10px;
+                border-radius: 10px;
+            }
+        }
+
         /* ====== RESPONSIVE ====== */
         @media (max-width: 768px) {
             .navbar {
@@ -936,6 +1016,21 @@
         </div>
         <img src="Fonditonuevo.png" alt="Logo ChoriChava" class="logo">
         <img src="Horizontal.png" alt="Chorizos ChoriChava" class="hero-image-mobile">
+    </section>
+
+    <!-- SLIDER DE PROMOCIONES -->
+    <section class="promo-slider">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Slide 1 -->
+                <div class="slider-slide">
+                    <img src="slime1.png" alt="Promoción ChoriChava">
+                </div>
+                <!-- Puedes agregar más slides aquí simplemente copiando el div anterior -->
+            </div>
+            <!-- Puntitos de navegación -->
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
     </section>
 
     <!-- SOBRE NOSOTROS -->
@@ -1310,6 +1405,79 @@
 
         // Cargar carrito al iniciar la página
         window.addEventListener('DOMContentLoaded', loadCart);
+
+        // ========== SLIDER DE PROMOCIONES ==========
+        let currentSlide = 0;
+        let sliderInterval;
+
+        function initSlider() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const sliderDots = document.getElementById('sliderDots');
+            const slides = document.querySelectorAll('.slider-slide');
+
+            if (slides.length === 0) return;
+
+            // Crear puntitos de navegación
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                sliderDots.appendChild(dot);
+            });
+
+            // Iniciar cambio automático cada 4 segundos
+            startAutoSlide();
+        }
+
+        function goToSlide(index) {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const slides = document.querySelectorAll('.slider-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            // Mover el track
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Actualizar puntitos activos
+            dots.forEach((dot, i) => {
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function startAutoSlide() {
+            sliderInterval = setInterval(nextSlide, 4000); // Cambiar cada 4 segundos
+        }
+
+        function stopAutoSlide() {
+            clearInterval(sliderInterval);
+        }
+
+        // Pausar auto-slide cuando el usuario interactúa
+        document.querySelectorAll('.slider-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                stopAutoSlide();
+                startAutoSlide(); // Reiniciar el intervalo después del clic
+            });
+        });
+
+        // Inicializar slider cuando carga la página
+        window.addEventListener('DOMContentLoaded', initSlider);
     </script>
 
 </body>
