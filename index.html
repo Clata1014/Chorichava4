@@ -1696,6 +1696,16 @@
             // Actualizar imagen de fondo
             updateHeroBackground(heroImages[heroCurrentSlide]);
 
+            // Mostrar/ocultar logo según el slide activo
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                if (heroCurrentSlide === 0) {
+                    logo.style.display = 'block'; // Mostrar en primera slide
+                } else {
+                    logo.style.display = 'none'; // Ocultar en segunda slide
+                }
+            }
+
             // Actualizar puntitos activos
             const dots = document.querySelectorAll('.hero-slider-dot');
             dots.forEach((dot, i) => {
