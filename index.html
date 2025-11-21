@@ -1622,6 +1622,10 @@
                 prevHeroSlide();
                 restartHeroSlider();
             });
+            // Permitir arrastre en la flecha izquierda
+            leftArrow.addEventListener('touchstart', handleHeroTouchStart, false);
+            leftArrow.addEventListener('touchmove', handleHeroTouchMove, false);
+            leftArrow.addEventListener('touchend', handleHeroTouchEnd, false);
 
             const rightArrow = document.createElement('div');
             rightArrow.className = 'hero-slider-arrow right';
@@ -1630,6 +1634,10 @@
                 nextHeroSlide();
                 restartHeroSlider();
             });
+            // Permitir arrastre en la flecha derecha
+            rightArrow.addEventListener('touchstart', handleHeroTouchStart, false);
+            rightArrow.addEventListener('touchmove', handleHeroTouchMove, false);
+            rightArrow.addEventListener('touchend', handleHeroTouchEnd, false);
 
             // Agregar flechas al hero
             heroSection.appendChild(leftArrow);
