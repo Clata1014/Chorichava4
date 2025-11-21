@@ -784,13 +784,36 @@
 
         /* Responsive para el slider */
         @media (max-width: 768px) {
-            .slider-container {
-                height: 300px;
+            .promo-slider {
+                margin: 0 auto;
+                margin-top: 0;
+                border-radius: 0;
+                max-width: 100vw;
+                width: 100%;
             }
 
-            .promo-slider {
-                margin: 20px 10px;
-                border-radius: 10px;
+            .slider-container {
+                height: 400px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .slider-track {
+                display: flex;
+                height: 100%;
+                width: 100%;
+            }
+
+            .slider-slide {
+                min-width: 100%;
+                flex-shrink: 0;
+                height: 100%;
+            }
+
+            .slider-slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
 
@@ -1410,9 +1433,12 @@
         // ========== SLIDER DE PROMOCIONES ==========
         let currentSlide = 0;
         let sliderInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         function initSlider() {
             const sliderTrack = document.getElementById('sliderTrack');
+            const sliderContainer = document.querySelector('.slider-container');
             const sliderDots = document.getElementById('sliderDots');
             const slides = document.querySelectorAll('.slider-slide');
 
@@ -1423,12 +1449,45 @@
                 const dot = document.createElement('div');
                 dot.className = 'slider-dot';
                 if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
                 sliderDots.appendChild(dot);
             });
 
+            // Eventos táctiles para swipe en móvil
+            sliderContainer.addEventListener('touchstart', handleTouchStart, false);
+            sliderContainer.addEventListener('touchmove', handleTouchMove, false);
+            sliderContainer.addEventListener('touchend', handleTouchEnd, false);
+
             // Iniciar cambio automático cada 4 segundos
             startAutoSlide();
+        }
+
+        function handleTouchStart(e) {
+            touchStartX = e.touches[0].clientX;
+        }
+
+        function handleTouchMove(e) {
+            touchEndX = e.touches[0].clientX;
+        }
+
+        function handleTouchEnd() {
+            if (touchStartX - touchEndX > 50) {
+                // Swipe izquierda - siguiente slide
+                nextSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            }
+
+            if (touchEndX - touchStartX > 50) {
+                // Swipe derecha - slide anterior
+                prevSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            }
         }
 
         function goToSlide(index) {
@@ -1444,7 +1503,7 @@
                 currentSlide = index;
             }
 
-            // Mover el track
+            // Mover el track con animación suave
             sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
             // Actualizar puntitos activos
@@ -1461,6 +1520,10 @@
             goToSlide(currentSlide + 1);
         }
 
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
         function startAutoSlide() {
             sliderInterval = setInterval(nextSlide, 4000); // Cambiar cada 4 segundos
         }
@@ -1468,14 +1531,6 @@
         function stopAutoSlide() {
             clearInterval(sliderInterval);
         }
-
-        // Pausar auto-slide cuando el usuario interactúa
-        document.querySelectorAll('.slider-dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                stopAutoSlide();
-                startAutoSlide(); // Reiniciar el intervalo después del clic
-            });
-        });
 
         // Inicializar slider cuando carga la página
         window.addEventListener('DOMContentLoaded', initSlider);
