@@ -472,6 +472,38 @@
             text-align: left;
         }
 
+        /* Botón Ver historia completa */
+        .historia-btn {
+            font-family: 'Lora', serif;
+            background: var(--vino-oscuro);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .historia-btn:hover {
+            background: var(--vino-claro);
+            transform: scale(1.05);
+        }
+
+        /* Contenido expandible */
+        .historia-completa {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .historia-completa.expanded {
+            max-height: 1000px;
+        }
+
         .badges {
             display: flex;
             justify-content: center;
@@ -1106,11 +1138,19 @@
     <!-- SOBRE NOSOTROS -->
     <section class="about" id="nosotros">
         <p>
-            <strong>CHORICHAVA</strong> nació en 2010 en Medellín ✨, cuando <strong>Carlos Chavarriaga</strong> decidió convertir su pasión por el chorizo en una marca que mezclara la tradición colombiana con sabores del mundo. Con el impulso del <strong>Premio Capital Semilla</strong> y más de 14 años presentes en los Mercados Campesinos del <strong>Parque La Presidenta</strong>, fuimos creando recetas propias: chorizos colombianos, argentinos, españoles, de mar, de chicharrón y jalapeño.
+            <strong>CHORICHAVA</strong> nació en Medellín en 2010. Con su sazón única y más de 14 años en los Mercados Campesinos, lleva a la mesa chorizos artesanales con tradición y sabor gourmet.
         </p>
-        <p>
-            Hoy, con el aval de <strong>Tulio Recomienda</strong>, cada bocado sigue contando una historia de <em>esfuerzo, calidad, frescura y creatividad</em>. ⭐
-        </p>
+
+        <button class="historia-btn" onclick="toggleHistoria()">Ver historia completa</button>
+
+        <div class="historia-completa" id="historiaCompleta">
+            <p>
+                <strong>CHORICHAVA</strong> nació en 2010 en Medellín ✨, cuando <strong>Carlos Chavarriaga</strong> decidió convertir su pasión por el chorizo en una marca que mezclara la tradición colombiana con sabores del mundo. Con el impulso del <strong>Premio Capital Semilla</strong> y más de 14 años presentes en los Mercados Campesinos del <strong>Parque La Presidenta</strong>, la marca fue dando vida a chorizos colombianos, argentinos, españoles, de mar, de chicharrón y jalapeño.
+            </p>
+            <p>
+                Hoy, con el aval de <strong>Tulio Recomienda</strong>, cada bocado sigue contando una historia de <em>esfuerzo, calidad, frescura y creatividad</em> ⭐.
+            </p>
+        </div>
 
         <div class="badges">
             <div class="badge">
@@ -1769,6 +1809,20 @@
                 }
             }
         });
+
+        // ========== ACORDEÓN HISTORIA COMPLETA ==========
+        function toggleHistoria() {
+            const historiaCompleta = document.getElementById('historiaCompleta');
+            const btn = document.querySelector('.historia-btn');
+
+            if (historiaCompleta.classList.contains('expanded')) {
+                historiaCompleta.classList.remove('expanded');
+                btn.textContent = 'Ver historia completa';
+            } else {
+                historiaCompleta.classList.add('expanded');
+                btn.textContent = 'Ocultar historia';
+            }
+        }
     </script>
 
 </body>
