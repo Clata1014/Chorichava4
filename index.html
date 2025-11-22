@@ -448,7 +448,7 @@
 
         /* ====== SECCIÓN SOBRE NOSOTROS ====== */
         .about {
-            padding: 40px 20px 60px;
+            padding: 15px 20px 60px;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -1025,7 +1025,7 @@
             }
 
             .about {
-                padding: 20px 20px 40px 20px;
+                padding: 10px 15px 30px 15px;
                 background: white;
                 margin-top: 0px;
             }
@@ -1039,31 +1039,33 @@
             }
 
             .badges {
-                gap: 20px;
-                padding: 40px 15px 30px;
-                margin-top: 20px;
+                gap: 10px;
+                padding: 15px 10px;
+                margin-top: 0;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             }
 
             .badges::before {
-                font-size: 2rem;
-                width: 60px;
-                height: 60px;
-                top: -25px;
-                border: 3px solid var(--dorado);
+                display: none;
             }
 
             .badge {
-                padding: 20px 25px;
-                min-width: 150px;
+                padding: 12px 15px;
+                min-width: auto;
+                flex: 1;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             }
 
             .badge-icon {
-                font-size: 2.5rem;
-                margin-bottom: 10px;
+                font-size: 1.8rem;
+                margin-bottom: 5px;
             }
 
             .badge-text {
-                font-size: 0.95rem;
+                font-size: 0.75rem;
+                font-weight: 600;
             }
 
             .products-grid {
@@ -1164,7 +1166,7 @@
     <section class="about" id="nosotros">
         <div class="badges">
             <div class="badge">
-                <div class="badge-icon">🇨🇴</div>
+                <div class="badge-icon">✨</div>
                 <div class="badge-text">Producto Colombiano</div>
             </div>
             <div class="badge">
