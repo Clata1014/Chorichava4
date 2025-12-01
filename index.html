@@ -1749,10 +1749,14 @@
             const isSlime = imageUrl.includes('Slime1');
             const bgSize = isSlime ? 'cover' : 'contain';
             const bgPosition = isSlime ? 'center' : 'center top';
+            const heroHeight = isSlime ? '80vh' : '30vh';
 
-            // Actualizar la regla CSS del ::before
+            // Actualizar la regla CSS del ::before y altura del hero
             heroStyleElement.textContent = `
                 @media (max-width: 768px) {
+                    .hero {
+                        min-height: ${heroHeight} !important;
+                    }
                     .hero::before {
                         background-image: url("${imageUrl}") !important;
                         background-size: ${bgSize} !important;
