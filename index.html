@@ -1745,11 +1745,18 @@
         function updateHeroBackground(imageUrl) {
             if (!heroStyleElement) return;
 
+            // Determinar el tamaño según la imagen
+            const isSlime = imageUrl.includes('Slime1');
+            const bgSize = isSlime ? 'cover' : 'contain';
+            const bgPosition = isSlime ? 'center' : 'center top';
+
             // Actualizar la regla CSS del ::before
             heroStyleElement.textContent = `
                 @media (max-width: 768px) {
                     .hero::before {
                         background-image: url("${imageUrl}") !important;
+                        background-size: ${bgSize} !important;
+                        background-position: ${bgPosition} !important;
                     }
                 }
             `;
