@@ -541,8 +541,9 @@
 
         /* ====== CATÁLOGO DE PRODUCTOS ====== */
         .products {
-            padding: 5px 20px;
+            padding: 5px 20px 20px;
             background: white;
+            margin-top: -50px;
         }
 
         .products h2 {
@@ -1072,8 +1073,57 @@
                 font-weight: 600;
             }
 
+            .products {
+                margin-top: -30px;
+                padding: 5px 15px 20px;
+            }
+
+            .products h2 {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+
             .products-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .product-card {
+                border-radius: 15px;
+            }
+
+            .product-image {
+                height: 120px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-name {
+                font-size: 1.1rem;
+                margin-bottom: 6px;
+            }
+
+            .product-description {
+                font-size: 0.8rem;
+                line-height: 1.3;
+                margin-bottom: 8px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .product-price {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .product-btn {
+                padding: 10px;
+                font-size: 0.95rem;
             }
 
             .contact-info {
