@@ -571,6 +571,10 @@
             margin: 0 auto;
         }
 
+        .products-mobile-image {
+            display: none;
+        }
+
         .product-card {
             background: white;
             border-radius: 20px;
@@ -1104,6 +1108,15 @@
                 -moz-osx-font-smoothing: grayscale;
             }
 
+            .products-mobile-image {
+                display: block;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto 12px;
+                border-radius: 14px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            }
+
             .products-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -1258,18 +1271,20 @@
     <section class="products" id="productos">
         <h2>Nuestros Productos</h2>
 
+        <img src="Chorizoargentino.jpeg" alt="Chorizo Argentino" class="products-mobile-image">
+
         <div class="products-grid">
             <!-- Producto 1 -->
             <div class="product-card">
-                <img src="Portada.jpeg" alt="Chorizo Tradicional" class="product-image">
+                <img src="Portada.jpeg" alt="Chorizo Argentino" class="product-image">
                 <div class="product-info">
-                    <div class="product-name">Chorizo Tradicional</div>
+                    <div class="product-name">Chorizo Argentino</div>
                     <div class="product-description">
                         Nuestro chorizo clásico, preparado con la receta original.
                         Perfecto para asar o cocinar. Sabor auténtico y delicioso.
                     </div>
                     <div class="product-price">$8.500</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo Tradicional', 8500)">
+                    <button class="product-btn" onclick="addToCart('Chorizo Argentino', 8500)">
                         🛒 Agregar al Carrito
                     </button>
                 </div>
