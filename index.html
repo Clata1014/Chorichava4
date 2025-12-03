@@ -539,6 +539,13 @@
             transform: translateZ(0);
         }
 
+        .badge-image {
+            width: 95px;
+            height: 95px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
         /* ====== CATÁLOGO DE PRODUCTOS ====== */
         .products {
             padding: 5px 20px 20px;
@@ -1075,6 +1082,11 @@
                 font-weight: 600;
             }
 
+            .badge-image {
+                width: 58px;
+                height: 58px;
+            }
+
             .products {
                 margin-top: -20px;
                 padding: 5px 15px 20px;
@@ -1232,8 +1244,7 @@
                 <div class="badge-text">Calidad Premium</div>
             </div>
             <div class="badge">
-                <div class="badge-icon">✨</div>
-                <div class="badge-text">100% Fresco</div>
+                <img src="Tuliorecomienda.png" alt="Tulio Recomienda" class="badge-image">
             </div>
         </div>
     </section>
