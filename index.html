@@ -689,6 +689,17 @@
         .gourmet-track .product-card {
             flex: 0 0 300px;
             scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gourmet-track .product-card .product-image {
+            background: var(--crema);
+            padding: 18px;
+            height: 260px;
+            width: 100%;
+            object-fit: contain;
+            border-bottom: 1px solid #f2e1b8;
         }
 
         .carousel-btn {
@@ -1272,6 +1283,11 @@
 
             .gourmet-track .product-card {
                 flex: 0 0 82vw;
+            }
+
+            .gourmet-track .product-card .product-image {
+                height: 220px;
+                padding: 16px;
             }
 
             .carousel-btn {
