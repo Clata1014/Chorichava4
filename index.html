@@ -609,14 +609,6 @@
             background-color: #ffffff;
         }
 
-        .product-image-large {
-            width: 100%;
-            height: auto;
-            max-height: 260px;
-            object-fit: cover;
-            display: block;
-        }
-
         .product-info {
             padding: 15px;
         }
@@ -1161,14 +1153,6 @@
                 object-fit: contain;
             }
 
-            /* Evita recorte en la imagen móvil de Chorizo Argentino */
-            .products-grid .product-card:first-child .product-image,
-            .products-grid .product-card:nth-child(2) .product-image {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-            }
-
             .product-info {
                 padding: 12px;
             }
@@ -1346,16 +1330,16 @@
 
             <!-- Producto 3 -->
             <div class="product-card">
-                <img src="Portada.jpeg" alt="" class="product-image">
+                <img src="assets/img/Chorizollanero.png" alt="Chorizo Llanero" class="product-image">
+
                 <div class="product-info">
-                    <div class="product-name">Chorizo Premium</div>
+                    <div class="product-name">Chorizo Llanero</div>
                     <div class="product-description">
-                        Nuestra selección especial con especias importadas y
-                        el mejor corte de carne. Una experiencia gourmet única.
+                        Chorizo tradicional llanero, jugoso, fresco y perfecto para asar o cocinar.
                     </div>
-                    <div class="product-price">$11.000</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo Premium', 11000)">
-                        🛒 Agregar al Carrito
+                    <div class="product-price">$9.000</div>
+                    <button class="add-to-cart-btn">
+                        <i class="fas fa-shopping-cart"></i> Agregar al Carrito
                     </button>
                 </div>
             </div>
