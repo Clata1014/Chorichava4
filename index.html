@@ -1143,6 +1143,11 @@
                 height: 120px;
             }
 
+            /* Evita recorte en la imagen móvil de Chorizo Argentino */
+            .products-grid .product-card:first-child .product-image {
+                object-fit: contain;
+            }
+
             .product-info {
                 padding: 12px;
             }
