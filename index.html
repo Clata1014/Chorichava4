@@ -563,6 +563,11 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Evita imágenes sueltas fuera de las tarjetas de producto */
+        .products > img {
+            display: none;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1117,6 +1122,14 @@
                 height: 120px;
             }
 
+            /* Evita recorte en la imagen móvil de Chorizo Argentino */
+            .products-grid .product-card:first-child .product-image,
+            .products-grid .product-card:nth-child(2) .product-image {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+
             .product-info {
                 padding: 12px;
             }
@@ -1261,15 +1274,15 @@
         <div class="products-grid">
             <!-- Producto 1 -->
             <div class="product-card">
-                <img src="Portada.jpeg" alt="Chorizo Tradicional" class="product-image">
+                <img src="Chorizoargentino.png" alt="Chorizo Argentino" class="product-image">
                 <div class="product-info">
-                    <div class="product-name">Chorizo Tradicional</div>
+                    <div class="product-name">Chorizo Argentino</div>
                     <div class="product-description">
                         Nuestro chorizo clásico, preparado con la receta original.
                         Perfecto para asar o cocinar. Sabor auténtico y delicioso.
                     </div>
                     <div class="product-price">$8.500</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo Tradicional', 8500)">
+                    <button class="product-btn" onclick="addToCart('Chorizo Argentino', 8500)">
                         🛒 Agregar al Carrito
                     </button>
                 </div>
@@ -1277,15 +1290,14 @@
 
             <!-- Producto 2 -->
             <div class="product-card">
-                <img src="Portada.jpeg" alt="Chorizo Picante" class="product-image">
+                <img src="Chorizochicharron.png" alt="Chorizo de Chicharrón" class="product-image">
                 <div class="product-info">
-                    <div class="product-name">Chorizo Picante 🌶️</div>
+                    <div class="product-name">Chorizo de Chicharrón</div>
                     <div class="product-description">
-                        Para los amantes del picante. Con chiles seleccionados que
-                        le dan ese toque de sabor intenso sin perder la jugosidad.
+                        Chorizo de cerdo con chicharrón, crocante, jugoso y con el sabor tradicional. Perfecto para asar o cocinar.
                     </div>
                     <div class="product-price">$9.000</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo Picante 🌶️', 9000)">
+                    <button class="product-btn" onclick="addToCart('Chorizo de Chicharrón', 9000)">
                         🛒 Agregar al Carrito
                     </button>
                 </div>
@@ -1293,7 +1305,7 @@
 
             <!-- Producto 3 -->
             <div class="product-card">
-                <img src="Portada.jpeg" alt="Chorizo Premium" class="product-image">
+                <img src="Portada.jpeg" alt="" class="product-image">
                 <div class="product-info">
                     <div class="product-name">Chorizo Premium</div>
                     <div class="product-description">
@@ -1309,7 +1321,7 @@
 
             <!-- Producto 4 -->
             <div class="product-card">
-                <img src="Portada.jpeg" alt="Paquete Familiar" class="product-image">
+                <img src="Portada.jpeg" alt="" class="product-image">
                 <div class="product-info">
                     <div class="product-name">Paquete Familiar</div>
                     <div class="product-description">
