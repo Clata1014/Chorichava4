@@ -576,6 +576,10 @@
             margin: 0 auto;
         }
 
+        .products-mobile-image {
+            display: none;
+        }
+
         .product-card {
             background: white;
             border-radius: 20px;
@@ -1116,6 +1120,15 @@
                 -moz-osx-font-smoothing: grayscale;
             }
 
+            .products-mobile-image {
+                display: block;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto 12px;
+                border-radius: 14px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            }
+
             .products-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -1280,6 +1293,8 @@
     <!-- PRODUCTOS -->
     <section class="products" id="productos">
         <h2>Nuestros Productos</h2>
+
+        <img src="Chorizoargentino.jpeg" alt="Chorizo Argentino" class="products-mobile-image">
 
         <div class="products-grid">
             <!-- Producto 1 -->
