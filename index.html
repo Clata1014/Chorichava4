@@ -696,7 +696,6 @@
         .gourmet-track .product-card .product-image-frame {
             background: #ffffff;
             padding: 18px;
-            min-height: 260px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -705,20 +704,23 @@
         }
 
         .gourmet-product-image {
-            min-height: 260px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
+            width: 100% !important;
+            min-height: 320px !important;
+            height: auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background-color: #ffffff !important;
         }
 
+        .gourmet-product-image img,
         .gourmet-image-large {
             width: 100% !important;
-            max-width: 420px !important;
+            max-width: 520px !important;
             height: auto !important;
-            display: block !important;
-            margin: 0 auto !important;
+            max-height: none !important;
             object-fit: contain !important;
+            display: block !important;
         }
 
         .carousel-btn {
@@ -1305,7 +1307,6 @@
             }
 
             .gourmet-track .product-card .product-image-frame {
-                min-height: 260px;
                 padding: 16px;
             }
 
