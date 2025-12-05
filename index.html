@@ -651,6 +651,117 @@
             background: var(--vino-claro);
         }
 
+        /* ====== LÍNEA GOURMET ====== */
+        .linea-gourmet {
+            margin-top: -35px;
+            padding: 5px 20px 30px;
+        }
+
+        .gourmet-carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .gourmet-track {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 10px 0 20px;
+        }
+
+        .gourmet-track::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gourmet-track::-webkit-scrollbar-thumb {
+            background: var(--vino-oscuro);
+            border-radius: 10px;
+        }
+
+        .gourmet-track::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        .gourmet-track .product-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gourmet-track .product-card .product-image-frame {
+            background: #ffffff;
+            padding: 18px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #f2e1b8;
+        }
+
+        .gourmet-product-image {
+            width: 100% !important;
+            min-height: 320px !important;
+            height: auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background-color: #ffffff !important;
+        }
+
+        .gourmet-product-image img,
+        .gourmet-image-large {
+            width: 100% !important;
+            max-width: 520px !important;
+            height: auto !important;
+            max-height: none !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(74, 26, 26, 0.9);
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+            z-index: 5;
+        }
+
+        .carousel-btn:hover {
+            background: var(--vino-claro);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-btn:disabled {
+            background: rgba(0, 0, 0, 0.2);
+            cursor: not-allowed;
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+
         /* ====== SECCIÓN DE CONTACTO ====== */
         .contact {
             padding: 60px 20px;
@@ -1183,6 +1294,27 @@
                 font-size: 0.95rem;
             }
 
+            .gourmet-carousel {
+                padding: 0 10px;
+            }
+
+            .gourmet-track {
+                padding: 10px 5px 15px;
+            }
+
+            .gourmet-track .product-card {
+                flex: 0 0 82vw;
+            }
+
+            .gourmet-track .product-card .product-image-frame {
+                padding: 16px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
+
             .contact-info {
                 flex-direction: column;
                 gap: 20px;
@@ -1207,7 +1339,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li><a href="nuestra-historia.html" class="nav-link">Nuestra Historia</a></li>
-                <li><a href="#productos" class="nav-link">Productos</a></li>
+                <li><a href="#linea-gourmet" class="nav-link">Productos</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 <li>
                     <div class="cart-icon" onclick="toggleCart()" title="Ver Carrito">
@@ -1290,76 +1422,169 @@
         </div>
     </section>
 
-    <!-- PRODUCTOS -->
-    <section class="products" id="productos">
-        <h2>Nuestros Productos</h2>
+    <!-- LÍNEA GOURMET -->
+    <section class="products linea-gourmet" id="linea-gourmet">
+        <h2>Línea Gourmet</h2>
 
-        <img src="Chorizoargentino.jpeg" alt="Chorizo Argentino" class="products-mobile-image">
+        <div class="gourmet-carousel">
+            <button class="carousel-btn prev" id="gourmetPrev" aria-label="Producto anterior">‹</button>
 
-        <div class="products-grid">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <img src="Chorizoargentino.png" alt="Chorizo Argentino" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Chorizo Argentino</div>
-                    <div class="product-description">
-                        Nuestro chorizo clásico, preparado con la receta original.
-                        Perfecto para asar o cocinar. Sabor auténtico y delicioso.
+            <div class="gourmet-track" id="gourmetTrack">
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizoahumado.png"
+                            alt="Chorizo Ahumado"
+                            class="gourmet-image-large"
+                        >
                     </div>
-                    <div class="product-price">$8.500</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo Argentino', 8500)">
-                        🛒 Agregar al Carrito
-                    </button>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Ahumado</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Ahumado', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizoaleman.png"
+                            alt="Chorizo Alemán"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Alemán</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Alemán', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizoantioqueño.png"
+                            alt="Chorizo Antioqueño"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Antioqueño</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Antioqueño', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizoargentino.png"
+                            alt="Chorizo Argentino"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Argentino</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Argentino', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizoespañol.png"
+                            alt="Chorizo Español"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Español</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Español', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizojalapeño.png"
+                            alt="Chorizo Jalapeño"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Jalapeño</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Jalapeño', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizollanero.png"
+                            alt="Chorizo Llanero"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Llanero</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Llanero', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizomarinero.png"
+                            alt="Chorizo Marinero"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Marinero</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Marinero', 0)">🛒 Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-frame gourmet-product-image">
+                        <img
+                            src="Chorizosantarrosano.png"
+                            alt="Chorizo Santarrosano"
+                            class="gourmet-image-large"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Chorizo Santarrosano</div>
+                        <div class="product-description">Chorizo gourmet precocido, jugoso y perfecto para asar o cocinar.</div>
+                        <div class="product-price">Precio especial</div>
+                        <button class="product-btn" onclick="addToCart('Chorizo Santarrosano', 0)">🛒 Agregar al Carrito</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="Chorizochicharron.png" alt="Chorizo de Chicharrón" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Chorizo de Chicharrón</div>
-                    <div class="product-description">
-                        Chorizo de cerdo con chicharrón, crocante, jugoso y con el sabor tradicional. Perfecto para asar o cocinar.
-                    </div>
-                    <div class="product-price">$9.000</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo de Chicharrón', 9000)">
-                        🛒 Agregar al Carrito
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <img src="Chorizollanero.png" alt="Chorizo Llanero" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Chorizo Llanero</div>
-                    <div class="product-description">
-                        Chorizo tradicional llanero, jugoso, fresco y perfecto para asar o cocinar.
-                    </div>
-                    <div class="product-price">$9.000</div>
-                    <button class="product-btn" onclick="addToCart('Chorizo Llanero', 9000)">
-                        🛒 Agregar al Carrito
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 4 -->
-            <div class="product-card">
-                <img src="Portada.jpeg" alt="" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Paquete Familiar</div>
-                    <div class="product-description">
-                        6 unidades de nuestros chorizos tradicionales.
-                        Ideal para reuniones familiares y parrilladas.
-                    </div>
-                    <div class="product-price">$45.000</div>
-                    <button class="product-btn" onclick="addToCart('Paquete Familiar', 45000)">
-                        🛒 Agregar al Carrito
-                    </button>
-                </div>
-            </div>
+            <button class="carousel-btn next" id="gourmetNext" aria-label="Producto siguiente">›</button>
         </div>
     </section>
+
+    <!-- PRODUCTOS (ANTERIOR) -->
+    <!--
+    <section class="products" id="productos">
+        ...
+    </section>
+    -->
 
     <!-- CONTACTO -->
     <section class="contact" id="contacto">
@@ -1641,6 +1866,45 @@
 
         // Cargar carrito al iniciar la página
         window.addEventListener('DOMContentLoaded', loadCart);
+
+        // ========== SLIDER LÍNEA GOURMET ==========
+        function initGourmetSlider() {
+            const gourmetTrack = document.getElementById('gourmetTrack');
+            const prevBtn = document.getElementById('gourmetPrev');
+            const nextBtn = document.getElementById('gourmetNext');
+
+            if (!gourmetTrack || !prevBtn || !nextBtn) return;
+
+            const updateButtons = () => {
+                const maxScroll = gourmetTrack.scrollWidth - gourmetTrack.clientWidth;
+                prevBtn.disabled = gourmetTrack.scrollLeft <= 0;
+                nextBtn.disabled = gourmetTrack.scrollLeft >= maxScroll - 1;
+            };
+
+            const scrollByCard = (direction) => {
+                const card = gourmetTrack.querySelector('.product-card');
+                const gap = parseFloat(getComputedStyle(gourmetTrack).gap || '0');
+                const scrollAmount = card ? card.getBoundingClientRect().width + gap : gourmetTrack.clientWidth;
+                gourmetTrack.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            };
+
+            prevBtn.addEventListener('click', () => {
+                scrollByCard(-1);
+                setTimeout(updateButtons, 300);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                scrollByCard(1);
+                setTimeout(updateButtons, 300);
+            });
+
+            gourmetTrack.addEventListener('scroll', updateButtons);
+            window.addEventListener('resize', updateButtons);
+
+            updateButtons();
+        }
+
+        window.addEventListener('DOMContentLoaded', initGourmetSlider);
 
         // ========== SLIDER DE PROMOCIONES ==========
         let currentSlide = 0;
